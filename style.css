@@ -1,0 +1,27 @@
+html { 
+    background: url(../images/splashBackground.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+
+#intro-text{
+    color: black;
+    padding: 100px;
+    background-color: white;
+    opacity: 0.6;
+}
+
+#startButton{
+    visibility: visible;
+    padding: 50px;
+    color: white;
+    background-color: red;
+}
+
+#canvas{
+    visibility: hidden;
+
+}
