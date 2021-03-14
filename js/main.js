@@ -1,28 +1,40 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+document.getElementById("gameover").style.display = "none"; 
+
+// esto hay que meterlo dentro de una función Start Game o algo asi
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  function CreateSplashScreen(){
+  function startGame(){
+    document.getElementById('startButton').onclick = () => {
+      document.getElementById("intro").style.display = "none";    
+     document.getElementById("startButton").style.display = "none";  
+     
+    drawGameScreen();
 
-  }  
+    };
 
-  
+  };
+
+  function drawGameScreen() {
+    document.getElementById("canvas").style.display = "block";
+    
+   }
+
+
+   startGame()
+
+
+
+
+
+
+
+
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
