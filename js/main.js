@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     drawGameScreen();
 
     };
-
+    window.requestAnimationFrame(this.update.bind(this));
   };
 
   function drawGameScreen() {

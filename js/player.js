@@ -1,9 +1,8 @@
+
 class Player {
   constructor() {
     this.x = 250;
-    this.y = 550; 
-    // this.width = this.width;
-    // this.height = this.height;
+    this.y = 530; 
     this.points = 0;   
     const img = new Image();
     img.addEventListener('load', () => {
@@ -27,12 +26,16 @@ class Player {
     this.img.src = "./images/zombies/Walk (10).png"; 
   }
 
-  draw() {
-    ctx.drawImage(this.img, this.x, this.y, 100, 100);
+  drawZombie() {
+    ctx.drawImage(this.img, this.x, this.y, 150, 150);
   }
 }
 
+
 const zombieGirl = new Player;
+
+
+
 
 
 

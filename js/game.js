@@ -1,6 +1,6 @@
 class Game {
   constructor(player1, cb){
-    this.zombieGirl = this.zombieGirl
+    //this.zombieGirl = this.zombieGirl
   }
 
   movePlayer (){
@@ -24,7 +24,7 @@ class Game {
       });
 
   }
-  
+
 }
 
 
@@ -34,8 +34,9 @@ function cleanCanvas (){
 
 
 function update() {
-    cleanCanvas()
-    this.zombieGirl.draw()
+    cleanCanvas();
+    this.drawZombie();
+    window.requestAnimationFrame(this.update.bind(this));
 }
   
   update()
