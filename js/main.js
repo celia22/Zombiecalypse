@@ -1,11 +1,17 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+
+
 document.getElementById("gameover").style.display = "none"; 
 
-// esto hay que meterlo dentro de una función Start Game o algo asi
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  function drawGameScreen() {
+    document.getElementById("game").style.display = "block";
+    
+   };
 
   function startGame(){
     document.getElementById('startButton').onclick = () => {
@@ -13,83 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
      document.getElementById("startButton").style.display = "none";  
      
     drawGameScreen();
-
+    const zombieGirl = new Player;
+    const zombicalypse = new Game(zombieGirl, ctx);    
+    zombicalypse.init()   
     };
+
 
   };
 
-  function drawGameScreen() {
-    document.getElementById("game").style.display = "block";
-    
-   }
 
-
-
-
-// esta hay que meterla en Update
-   startGame()
-
-
-
-
-
-
-
-
+startGame()
 
 });
 
 
 
-
-/*
-
-document.addEventListener('DOMContentLoaded', () => {
-    let game;
-  
-    function printGameOver() {
-      let gameOver = document.getElementById('gameover');
-      let canvas = document.querySelector('#snake');
-      canvas.style = 'display: none';
-      gameOver.style = 'display: block';
-    }
-  
-    function generateSplashScreen() {
-      const intro = document.getElementById('intro');
-      intro.innerHTML = `
-      <div>
-        <button id="play" class="mb-2">Play</button>
-      </div>
-      `;
-  
-      const playButton = document.querySelector('#play');
-      playButton.addEventListener('click', () => {
-        intro.classList.add('hide');
-        const game = document.getElementById('game');
-        game.classList.remove('hide');
-        game.classList.add('show');
-  
-        const startButton = game.querySelector('#start');
-        startButton.addEventListener('click', () => {
-          let canvas = game.querySelector('#snake');
-          const ctx = canvas.getContext('2d');
-          const snakeGame = new Game(
-            {
-              ctx: ctx,
-              rows: canvas.width / 10,
-              columns: canvas.height / 10,
-              maxCells: 10,
-              snake: new Snake(canvas.width / 10, canvas.height / 10),
-            },
-            printGameOver
-          );
-  
-          snakeGame.start();
-        });
-      });
-    }
-  
-    generateSplashScreen();
-  });
-
-  */
