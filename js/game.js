@@ -1,30 +1,46 @@
-function updateCanvas() {
-    ctx.clearRect(0,0,1300,700);
-    this.player1.draw()
+class Game {
+  constructor(player1, cb){
+    this.zombieGirl = this.zombieGirl
+  }
+
+  movePlayer (){
+    document.addEventListener('keydown', event => {
+        switch (event.code) {   
+          case "ArrowLeft":     
+            this.zombieGirl.moveLeft();
+            console.log('left');
+            break;
+          case "ArrowRight":
+            this.zombieGirl.moveRight();
+            console.log('right');
+            break;
+          case "ArrowUp":
+            this.zombieGirl.moveUp();
+            console.log("up");
+            break;
+
+        }
+        update();
+      });
+
   }
   
-  updateCanvas()
+}
 
-  document.addEventListener('keydown', event => {
-    switch (event.code) {   
-      case "ArrowLeft":     
-        player1.moveLeft();
-        //console.log('left');
-        break;
-      case "ArrowRight":
-        player1.moveRight();
-        //console.log('right');
-        break;
-      case "ArrowUp":
-        player1.moveUp();
-        //console.log("up");
-        break;
-      case "ArrowDown":
-        player1.moveDown();
-       // console.log("down")    
-    }
-    updateCanvas();
-  });
+
+function cleanCanvas (){
+    ctx.clearRect(0,0,1300,700);
+}
+
+
+function update() {
+    cleanCanvas()
+    this.zombieGirl.draw()
+}
+  
+  update()
+
+
 
 
 

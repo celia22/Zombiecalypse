@@ -1,9 +1,11 @@
  
-#canvas{ 
-    background: url(../images/backgrounds/PNG/City2/Pale/City2_pale.png); 
+#game{ 
+    background: url(../images/backgrounds/gameBackground.png); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    display: none;       
+    display: none;  
+       
 };
+

@@ -19,11 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   function drawGameScreen() {
-    document.getElementById("canvas").style.display = "block";
+    document.getElementById("game").style.display = "block";
     
    }
 
 
+
+
+// esta hay que meterla en Update
    startGame()
 
 

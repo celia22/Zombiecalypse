@@ -1,37 +1,40 @@
 class Player {
   constructor() {
-    this.x = x;
-    this.y = y; 
-    this.width = this.width;
-    this.height = this.height;
+    this.x = 250;
+    this.y = 550; 
+    // this.width = this.width;
+    // this.height = this.height;
     this.points = 0;   
     const img = new Image();
     img.addEventListener('load', () => {
     this.img = img;
     this.draw();
     });
-
+    img.src = "./images/zombies/Attack (2).png";
      
   }
+
   moveLeft() {
     this.x -= 40;
-    this.img.src = "./images/zombies/female/Attack (2).png";
+    this.img.src = "./images/zombies/Attack (2).png";
   }
   moveRight() {
     this.x += 40;
-    this.img.src = "./images/zombies/female/Dead (1).png"; 
+    this.img.src = "./images/zombies/Dead (1).png"; 
   }
   moveUp(){
     this.y -= 40;
-    this.img.src = "./images/zombies/female/Walk (10).png"; 
+    this.img.src = "./images/zombies/Walk (10).png"; 
   }
 
   draw() {
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    ctx.drawImage(this.img, this.x, this.y, 100, 100);
   }
 }
 
-const player1 = new Player();
+const zombieGirl = new Player;
+
+
 
 
 

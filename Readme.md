@@ -87,6 +87,13 @@ this.brains;
 this.player;
 this.gameover;
 this.score;
+drawplayer()
+drawbrains()
+assignControlsToKeys()
+generateBrains()
+generateEnemies()
+clean()
+update()
 
 }
 
