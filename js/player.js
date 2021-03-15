@@ -15,27 +15,33 @@ class Player {
   constructor() {
     this.x = 250;
     this.y = 500; 
-    this.points = 0; 
     this.direction = "rigth";
     
   }
 
   moveLeft() {
-    this.x -= 40;
-    //this.img.src = "./images/zombies/Attack (2).png";
+    if(this.x > 0){
+      this.x -= 40;
+    }    
+    
   }
   moveRight() {
-    this.x += 40;
-    //this.img.src = "./images/zombies/Dead (1).png"; 
+    if(this.x < 1270){
+      this.x += 40;
+    } 
+    
   }
   moveUp(){
-    this.y -= 40;
-   // this.img.src = "./images/zombies/Walk (10).png"; 
+    if(this.y > 0){
+      this.y -= 40;
+    } 
+      
   }
 
   
 
 };  
  
+
 
 

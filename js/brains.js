@@ -1,34 +1,30 @@
-// class interactionObjects {
-//     constructor() {
-//       this.x = x;
-//       this.y = y; 
-//       this.size = size;
-//       this.points = 0; 
-//       this.images = images;
-// /*
-//       const images = new Image();
-//       images.addEventListener('load', () => {
-//       this.images = images;
-//       this.draw();
-//       }); */
-          
-//     }
-//     draw() {
-//         ctx.drawImage(this.img, this.x, this.y, this.size, this.size);
-//       }
-// }
+class InteractionObjects {
+    constructor(x,y) {
+      this.x = x;
+      this.y = y; 
+      
+                 
+    }
 
-// const brainImg = new Image();
-// brainImg.addEventListener('load', () => {
-// this.brainImg = brainImg;
-// this.draw();
-// }); 
+};
 
-// brainImg.src = "./images/zombies/brain.png";
+class Brains extends InteractionObjects {
+    constructor(x,y,size){
+        super(x,y,size)
+        this.x = 160;
+        this.y = 200;
+    }
+    updateScore(){
+        this.game.score += 10
+    }
+};
+    
+
+
 
  
-// const Brains = new interactionObjects (50, 100, 30, 10, brainImg) 
-// console.log(Brains)
+
+
 
 // /*
 

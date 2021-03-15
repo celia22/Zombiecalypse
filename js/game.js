@@ -1,9 +1,9 @@
 class Game {
-  constructor(player, ctx){    
-    this.player = player;
-    this.ctx = ctx;
-    //this.brains;
-    //this.score;
+  constructor(player, brains,score){    
+    this.player = player;    
+    this.brains = brains;    
+    this.score = score;
+    
     //this.gameover;
     
   }
@@ -11,10 +11,13 @@ class Game {
   drawPlayer(){    
     const img = new Image();
     img.src = "./images/zombies/Attack (2).png"; 
-    console.log(this.player.x)  
-    ctx.drawImage(img, this.player.x, this.player.y, 150, 150);
-  
-    
+    ctx.drawImage(img, this.player.x, this.player.y, 150, 150);    
+  }
+
+  drawBrains(){
+    const brainImg = new Image();
+    brainImg.src = "./images/brain.png";
+    ctx.drawImage(brainImg, this.brains.x, this.brains.y, 100, 100);
   }
 
   setControlsToKeys (){
@@ -66,6 +69,7 @@ class Game {
   update() {      
     this.cleanCanvas();
     this.drawPlayer();
+    this.drawBrains();
     window.requestAnimationFrame(this.update.bind(this));
    
   }  

@@ -15,12 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startGame(){
     document.getElementById('startButton').onclick = () => {
-      document.getElementById("intro").style.display = "none";    
-     document.getElementById("startButton").style.display = "none";  
+    document.getElementById("intro").style.display = "none";    
+    document.getElementById("startButton").style.display = "none";  
      
     drawGameScreen();
-    const zombieGirl = new Player;
-    const zombicalypse = new Game(zombieGirl, ctx);    
+    const zombieGirl = new Player;    
+    const brainiac = new Brains;    
+    const zombicalypse = new Game(zombieGirl, brainiac);      
     zombicalypse.init()   
     };
 
