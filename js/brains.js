@@ -26,21 +26,3 @@ class Brains extends InteractionObjects {
 
 
 
-// /*
-
-// // GREEN HOLES
-// var Stick = function(x, y) { 
-//     this.x = x;
-//     this.y = y;
-// };
-
-// Stick.prototype.draw = function() {
-//     fill(16, 227, 37);
-//     rectMode(CENTER);
-//     ellipse(this.x, this.y, 80, 80);
-// };
-
-// var sticks = [];
-// for (var i = 0; i < 40; i++) {  
-//     sticks.push(new Stick(i * 120, random(30, 300)));
-// }*/
