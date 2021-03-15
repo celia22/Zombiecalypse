@@ -14,28 +14,34 @@
 class Player {
   constructor() {
     this.x = 250;
-    this.y = 500; 
+    this.y = 540; 
     this.direction = "rigth";
     
   }
 
   moveLeft() {
-    if(this.x > 0){
-      this.x -= 40;
+    if(this.x > 20){
+      this.x -= 100;
     }    
     
   }
   moveRight() {
-    if(this.x < 1270){
-      this.x += 40;
+    if(this.x < 1250){
+      this.x += 100;
     } 
     
   }
   moveUp(){
-    if(this.y > 0){
-      this.y -= 40;
-    } 
-      
+    if(this.y === 540){
+      this.y -= 200;
+    }       
+  }
+
+  fall(){
+    if (this.y === 340){
+      this.y += 200;
+    }
+     
   }
 
   
@@ -44,4 +50,4 @@ class Player {
  
 
 
-
+console.log(canvas.height)

@@ -3,10 +3,12 @@ class Game {
     this.player = player;    
     this.brains = brains;    
     this.score = score;
+    this.generatedBrain = [];
     
     //this.gameover;
     
   }
+  
 
   // PLAYER 
 
@@ -39,7 +41,7 @@ class Game {
       document.addEventListener('keyup', event => {
         switch (event.code){
         case "ArrowUp":
-          this.player.y += 40;
+          this.player.fall();
           break;
 
          }
@@ -48,21 +50,33 @@ class Game {
   }
 
   // BRAINS AND ENEMIES
-
-  drawBrains(){
-    const brainImg = new Image();
-    brainImg.src = "./images/brain.png";
-    ctx.drawImage(brainImg, this.brains.x, this.brains.y, 100, 100);
-  }
-
+  
   generateBrains(){
-    let generatedBrain = []
+   
     for (let i = 0; i < 30; i++){
-      generatedBrain.push(this.brainiac * 30)
+      this.generatedBrain.push(new Brains);
+      
     }
+      
+}
+
+drawBrains(){
+  const brainImg = new Image();
+  brainImg.src = "./images/brain.png";
+  ctx.drawImage(brainImg, this.brains.x, this.brains.y, 100, 100);
+
+  this.generatedBrain.forEach(item => {
+    ctx.drawImage(brainImg, item.x, item.y, 100, 100);
+    
+  });
+  
+}
+
+
+
+  moveBrains() {
+    this.brains.y =+ 60;
   }
-
-
 
     // collision(){
     // }
@@ -82,16 +96,21 @@ class Game {
   update() {      
     this.cleanCanvas();
     this.drawPlayer();
-    this.drawBrains();
-    this.generateBrains();
+    this.drawBrains();    
+    this.moveBrains();
+    setInterval(this.generateBrains, 1500)
     window.requestAnimationFrame(this.update.bind(this));
    
   }  
 
+  
   init() {
-    this.setControlsToKeys ();
+    this.setControlsToKeys ();    
+    this.generateBrains();
     window.requestAnimationFrame(this.update.bind(this));
   }
   
+  
+
 };
 
