@@ -69,9 +69,8 @@ class Player {
       this.img.src = this.playerUp;
     };
 
-    console.log("drawbzombie was called")
     this.ctx.drawImage(img, this.x, this.y, this.size, this.size);  /// peta aqui
-    console.log("drawbzombie is executed")
+
   }
 
 

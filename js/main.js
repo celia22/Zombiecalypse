@@ -18,14 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       drawGameScreen();
       const zombieGirl = new Player(250, 540, "right", ctx, 150);
-      console.log("new player was called" + zombieGirl)
-      console.log(zombieGirl)
       const brainiac = new Brains(this.x, 0, this.size, ctx);
-      console.log("new brain was called" + brainiac)
       const zombicalypse = new Game(zombieGirl, brainiac, 0, ctx);
-      console.log("new game was called" + zombicalypse)
       zombicalypse.init()
-      console.log("init was called")
     };
 
 

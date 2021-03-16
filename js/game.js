@@ -1,4 +1,5 @@
 let generatedBrain = [];
+let generatedEnemies = [];
 
 
 class Game {
@@ -46,7 +47,7 @@ class Game {
 
   }
 
-  // BRAINS AND ENEMIES
+  // BRAINS 
 
   generateBrains() {
     let temp = new Brains()
@@ -65,6 +66,29 @@ class Game {
 
   moveBrains() {
     generatedBrain.forEach(item => {
+      item.y += 5;
+    });
+  }
+
+  // ENEMIES 
+
+  generateEnemies() {
+    let temp = new Enemies()
+    generatedEnemies.push(temp);
+    // console.log("generateBrains was called")
+  }
+
+
+  printEnemies() {
+    generatedEnemies.forEach(item => {
+      item.draw();
+    });
+    //console.log("drawbrain was called")  
+  }
+
+
+  moveEnemies() {
+    generatedEnemies.forEach(item => {
       item.y += 5;
     });
   }
@@ -89,6 +113,8 @@ class Game {
     this.player.draw();
     this.printBrains();
     this.moveBrains();
+    this.printEnemies();
+    this.moveEnemies();
     window.requestAnimationFrame(this.update.bind(this));
 
   }
@@ -98,6 +124,7 @@ class Game {
     this.setControlsToKeys();
     console.log("setcontrolskeys was called")
     setInterval(this.generateBrains, 3000)
+    setInterval(this.generateEnemies, 4000)
     window.requestAnimationFrame(this.update.bind(this));
   }
 
