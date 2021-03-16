@@ -1,24 +1,24 @@
+// const canvas = document.getElementById("canvas");
+// const ctx = canvas.getContext("2d");
+
 let generatedBrain = [];
 
 
 class Game {
-  constructor(player, brains,score){    
+  constructor(player, brains,score,ctx){    
     this.player = player;    
     this.brains = brains;    
     this.score = score;
+    this.ctx = ctx;
     
     //this.gameover;
     
   }
   
 
-  // PLAYER 
 
-  drawPlayer(){    
-    const img = new Image();
-    img.src = "./images/zombies/Attack (2).png"; 
-    ctx.drawImage(img, this.player.x, this.player.y, 150, 150);    
-  }
+
+  
 
   setControlsToKeys (){
     console.log("movePlayer is called")
@@ -26,14 +26,17 @@ class Game {
         switch (event.code) {   
           case "ArrowLeft":     
             this.player.moveLeft();
+            this.player.direction === 2;
             console.log('left');
             break;
           case "ArrowRight":
             this.player.moveRight();
+            this.player.direction === 1;
             console.log('right');
             break;
           case "ArrowUp":
             this.player.moveUp();
+            this.player.direction === 3;
             console.log("up");
             break;
 
@@ -56,24 +59,23 @@ class Game {
   generateBrains(){  
   let temp = new Brains()      
    generatedBrain.push(temp);      
-   console.log(generatedBrain)
+  // console.log("generateBrains was called")
  }
 
 
-drawBrains(){
-  // const brainImg = new Image();
-  // brainImg.src = "./images/brain.png";
-  // ctx.drawImage(brainImg, this.brains.x, this.brains.y, 100, 100);
-
-  generatedBrain.forEach(item => {
-    this.brains.draw(item);
+printBrains(){
+   generatedBrain.forEach(item => {
+    item.draw();
   });
-    
+  //console.log("drawbrain was called")  
 }
 
 
 moveBrains() {
-  this.brains.y += 5;
+  generatedBrain.forEach(item => {
+    item.y += 5;
+  });
+  
 }
 
     // collision(){
@@ -93,8 +95,8 @@ moveBrains() {
 
   update() {      
     this.cleanCanvas();
-    this.drawPlayer();
-   // this.drawBrains();    
+    this.player.draw();
+    this.printBrains(); 
     this.moveBrains();    
     window.requestAnimationFrame(this.update.bind(this));
    
@@ -102,9 +104,9 @@ moveBrains() {
 
   
   init() {
-    this.setControlsToKeys ();    
+    this.setControlsToKeys ();  
+    console.log("setcontrolskeys was called")   
     setInterval(this.generateBrains, 3000)
-    this.drawBrains();
     window.requestAnimationFrame(this.update.bind(this));
   }  
   

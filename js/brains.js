@@ -7,35 +7,26 @@ class InteractionObjects {
 };
 
 class Brains extends InteractionObjects {
-    constructor(x,y,size){
-        super(x,y,size)
+    constructor(x,y,size, ctx){
+        super(x,y,size, ctx)
         this.x = Math.floor(Math.random()* canvas.width); // ver medida del cerebro, puede que haga falta añadir this.width;
         this.y = 0;
         this.size = 100;
+        this.ctx = canvas.getContext("2d");
     }
     updateScore(){
         this.game.score += 10
     }
 
     draw() {
-        const img = new Image();
-        img.src = "./images/brain.png";
-        this.ctx.drawImage(img,this.x, this.y, this.size, this.size);
-      }
-
+        const imgBrain = new Image();
+        imgBrain.src = "./images/brain.png";
+        this.ctx.drawImage(imgBrain,this.x, this.y, this.size, this.size);
+        console.log("drawbrains")
+      }  
+      
+  };
     
-};
-    
-
-
-
-// generateBrains(){  
-//   generatedBrain.forEach(item => {
-//     //ctx.drawImage(item.brainImg, item.x, item.y, 100, 100);
-//      this.drawBrains();
-//    });
-// }
-
 
 
 
