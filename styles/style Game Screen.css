@@ -1,7 +1,7 @@
  
 #game{ 
     background-color: wheat;
-    /* background: url(../images/backgrounds/gameBackground.png);  */
+    background: url(../images/backgrounds/gameBackground.png); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

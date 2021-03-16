@@ -1,9 +1,11 @@
+let generatedBrain = [];
+
+
 class Game {
   constructor(player, brains,score){    
     this.player = player;    
     this.brains = brains;    
     this.score = score;
-    this.generatedBrain = [];
     
     //this.gameover;
     
@@ -51,32 +53,28 @@ class Game {
 
   // BRAINS AND ENEMIES
   
-  generateBrains(){
-   
-    for (let i = 0; i < 30; i++){
-      this.generatedBrain.push(new Brains);
-      
-    }
-      
-}
+  generateBrains(){  
+  let temp = new Brains()      
+   generatedBrain.push(temp);      
+   console.log(generatedBrain)
+ }
+
 
 drawBrains(){
-  const brainImg = new Image();
-  brainImg.src = "./images/brain.png";
-  ctx.drawImage(brainImg, this.brains.x, this.brains.y, 100, 100);
+  // const brainImg = new Image();
+  // brainImg.src = "./images/brain.png";
+  // ctx.drawImage(brainImg, this.brains.x, this.brains.y, 100, 100);
 
-  this.generatedBrain.forEach(item => {
-    ctx.drawImage(brainImg, item.x, item.y, 100, 100);
-    
+  generatedBrain.forEach(item => {
+    this.brains.draw(item);
   });
-  
+    
 }
 
 
-
-  moveBrains() {
-    this.brains.y =+ 60;
-  }
+moveBrains() {
+  this.brains.y += 5;
+}
 
     // collision(){
     // }
@@ -90,15 +88,14 @@ drawBrains(){
 
 
   cleanCanvas (){
-      ctx.clearRect(0,0,1450,700);
+      ctx.clearRect(0,0,1450,750);
   }
 
   update() {      
     this.cleanCanvas();
     this.drawPlayer();
-    this.drawBrains();    
-    this.moveBrains();
-    setInterval(this.generateBrains, 1500)
+   // this.drawBrains();    
+    this.moveBrains();    
     window.requestAnimationFrame(this.update.bind(this));
    
   }  
@@ -106,10 +103,10 @@ drawBrains(){
   
   init() {
     this.setControlsToKeys ();    
-    this.generateBrains();
+    setInterval(this.generateBrains, 3000)
+    this.drawBrains();
     window.requestAnimationFrame(this.update.bind(this));
-  }
-  
+  }  
   
 
 };
