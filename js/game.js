@@ -19,18 +19,19 @@ class Game {
       switch (event.code) {
         case "ArrowLeft":
           this.player.moveLeft();
-          // this.player.direction === 2;
-          console.log('left');
+          this.player.isDirectionLeft();
+          console.log(this.player.direction)
+          //console.log('left');
           break;
         case "ArrowRight":
           this.player.moveRight();
-          // this.player.direction === 1;
-          console.log('right');
+          this.player.isDirectionRight();
+          //console.log('right');
           break;
         case "ArrowUp":
           this.player.moveUp();
-          // this.player.direction === 3;
-          console.log("up");
+          setInterval(this.player.isDirectionUp, 2000);
+          //console.log("up");
           break;
 
       }
@@ -52,7 +53,6 @@ class Game {
   generateBrains() {
     let temp = new Brains()
     generatedBrain.push(temp);
-    // console.log("generateBrains was called")
   }
 
 
@@ -60,7 +60,6 @@ class Game {
     generatedBrain.forEach(item => {
       item.draw();
     });
-    //console.log("drawbrain was called")  
   }
 
 
@@ -75,7 +74,6 @@ class Game {
   generateEnemies() {
     let temp = new Enemies()
     generatedEnemies.push(temp);
-    // console.log("generateBrains was called")
   }
 
 
@@ -83,9 +81,8 @@ class Game {
     generatedEnemies.forEach(item => {
       item.draw();
     });
-    //console.log("drawbrain was called")  
-  }
 
+  }
 
   moveEnemies() {
     generatedEnemies.forEach(item => {
@@ -93,14 +90,40 @@ class Game {
     });
   }
 
-  // collision(){
+
+  brainCollision() {
+    generatedBrain.forEach(item => {
+      if (this.player.x < (item.x + item.size) &&
+        (this.player.x + this.player.size / 2) > item.x &&
+        this.player.y < (item.y + item.size) &&
+        (this.player.y + this.player.size) > item.y) {
+      }
+    });
+
+  }
+
+  enemiesCollision() {
+    generatedEnemies.forEach(item => {
+      if (this.player.x < (item.x + item.size) &&
+        (this.player.x + this.player.size / 2) > item.x &&
+        this.player.y < (item.y + item.size) &&
+        (this.player.y + this.player.size) > item.y) {
+      }
+    });
+
+  }
+
+
+  // updateScore() {
+  //   if (brainCollision() === true) {
+  //     this.score++
+  //   } else if (enemiesCollision() === true) {
+  //     //setGameOver();
+  //   }
+  //   console.log(this.score)
   // }
 
-
-  // updateScore(){
-  // }
-
-  // drawScore(){
+  // drawScore() {
   // }
 
 
@@ -113,8 +136,11 @@ class Game {
     this.player.draw();
     this.printBrains();
     this.moveBrains();
+    this.brainCollision();
     this.printEnemies();
     this.moveEnemies();
+    this.enemiesCollision();
+    //this.updateScore();
     window.requestAnimationFrame(this.update.bind(this));
 
   }
@@ -124,7 +150,7 @@ class Game {
     this.setControlsToKeys();
     console.log("setcontrolskeys was called")
     setInterval(this.generateBrains, 3000)
-    setInterval(this.generateEnemies, 4000)
+    setInterval(this.generateEnemies, 6000)
     window.requestAnimationFrame(this.update.bind(this));
   }
 

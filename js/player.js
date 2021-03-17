@@ -20,15 +20,13 @@ class Player {
     }
 
   }
+
   moveUp() {
     if (this.y === 540) {
       this.y -= 200;
     }
   }
 
-  // isDirectionUp() {
-  //   return this.direction === 2
-  // }
 
   fall() {
     if (this.y === 340) {
@@ -37,66 +35,46 @@ class Player {
 
   }
 
-  updateDirection() {
-    switch (this.direction) {
-      case "right":
-        this.direction = 1;
-        break;
-
-      case "left":
-        this.direction = 2;
-        break;
-
-      case "up":
-        this.direction = 3;
-        break;
-    }
+  isDirectionRight() {
+    return this.direction = "right";
   }
+
+
+  isDirectionLeft() {
+    return this.direction = "left";
+  }
+
+  isDirectionUp() {
+    return this.direction = "up";
+  }
+
 
   draw() {
-    const img = new Image();
+    let img = new Image();
     img.src = "./images/zombies/Attack (2).png";
 
-    this.playerRight = "./images/zombies/Attack (2).png";
-    this.playerLeft = "./images/zombies/Dead (1).png";
-    this.playerUp = "./images/zombies/Walk (10).png";
+    let imgRight = new Image();
+    imgRight.src = "./images/zombies/Attack (2).png";
 
-    if (this.direction === 1) {
-      this.img.src = this.playerRight;
-    } else if (this.direction === 2) {
-      this.img.src = this.playerLeft;
-    } else if (this.direction === 3) {
-      this.img.src = this.playerUp;
+    let imgLeft = new Image();
+    imgLeft.src = "./images/zombies/Walk (1)Left.png";
+
+    let imgUp = new Image();
+    imgUp.src = "./images/zombies/Walk (10).png";
+
+    if (this.direction === "right") {
+      img = imgRight;
+    } else if (this.direction === "left") {
+      img = imgLeft;
+    } else if (this.direction === "up") {
+      img = imgUp;
     };
 
-    this.ctx.drawImage(img, this.x, this.y, this.size, this.size);  /// peta aqui
+    this.ctx.drawImage(img, this.x, this.y, this.size, this.size);
 
   }
-
 
 };
 
 
 
-
-
-// draw(){
-//   const img = new Image();
-//   this.img.src = "./images/zombies/Attack (2).png";
-
-//   this.playerRight = "./images/zombies/Attack (2).png";
-//   this.playerLeft = "./images/zombies/Dead (1).png";
-//   this.playerUp = "./images/zombies/Walk (10).png";
-
-//    if (this.direction === 1) {
-//       this.img.src = this.playerRight;
-//       } else if (this.direction === 2) {
-//         this.img.src = this.playerLeft;
-//       } else if (this.direction === 3){
-//         this.img.src = this.playerUp;
-//     };
-
-//   console.log("drawbzombie was called")
-//   this.ctx.drawImage(img, this.x, this.y, this.size, this.size);  /// peta aqui
-//   console.log("drawbzombie is executed")
-// }
