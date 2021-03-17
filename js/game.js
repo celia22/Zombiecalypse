@@ -3,18 +3,16 @@ let generatedEnemies = [];
 
 
 class Game {
-  constructor(player, brains, score, ctx) {
+  constructor(player, ctx) {
     this.player = player;
-    this.brains = brains;
-    this.score = score;
     this.ctx = ctx;
+    this.score = 0;
 
     //this.gameover;
 
   }
 
   setControlsToKeys() {
-    console.log("movePlayer is called")
     document.addEventListener('keydown', event => {
       switch (event.code) {
         case "ArrowLeft":
@@ -30,17 +28,19 @@ class Game {
           break;
         case "ArrowUp":
           this.player.moveUp();
-          setInterval(this.player.isDirectionUp, 2000);
+          this.player.isDirectionUp();
           //console.log("up");
           break;
 
       }
+      //console.log("setokeys", this.setControlsToKeys)
     });
 
     document.addEventListener('keyup', event => {
       switch (event.code) {
         case "ArrowUp":
           this.player.fall();
+          this.player.isInGround();
           break;
 
       }
@@ -51,14 +51,30 @@ class Game {
   // BRAINS 
 
   generateBrains() {
-    let temp = new Brains()
+    let temp = new Brains(this.x, 0, this.size, this.ctx, true)
     generatedBrain.push(temp);
   }
 
 
   printBrains() {
     generatedBrain.forEach(item => {
-      item.draw();
+      if (item.status === true) {
+        item.draw();
+      }
+    });
+  }
+
+  brainCollision() {
+    generatedBrain.forEach(item => {
+      if (this.player.x < (item.x + item.size) &&
+        (this.player.x + this.player.size / 2) > item.x &&
+        this.player.y < (item.y + item.size) &&
+        (this.player.y + this.player.size) > item.y) {
+        item.status = false;
+        this.score++  // sube 49 puntos por collision
+        console.log("score", this.score)
+      }
+
     });
   }
 
@@ -72,35 +88,25 @@ class Game {
   // ENEMIES 
 
   generateEnemies() {
-    let temp = new Enemies()
+    let temp = new Enemies(this.x, 0, this.size, ctx, true)
     generatedEnemies.push(temp);
   }
 
 
   printEnemies() {
     generatedEnemies.forEach(item => {
-      item.draw();
+      if (item.status === true) {
+        item.draw();
+      }
     });
-
   }
 
   moveEnemies() {
     generatedEnemies.forEach(item => {
-      item.y += 5;
+      item.x += 8;
     });
   }
 
-
-  brainCollision() {
-    generatedBrain.forEach(item => {
-      if (this.player.x < (item.x + item.size) &&
-        (this.player.x + this.player.size / 2) > item.x &&
-        this.player.y < (item.y + item.size) &&
-        (this.player.y + this.player.size) > item.y) {
-      }
-    });
-
-  }
 
   enemiesCollision() {
     generatedEnemies.forEach(item => {
@@ -108,19 +114,27 @@ class Game {
         (this.player.x + this.player.size / 2) > item.x &&
         this.player.y < (item.y + item.size) &&
         (this.player.y + this.player.size) > item.y) {
+        item.status = false;
       }
     });
-
+    return true
   }
 
 
+
+  // delete(){
+  //   if(this.y > canvas.height){
+
+  //   }
+  // }
+
   // updateScore() {
-  //   if (brainCollision() === true) {
+  //   if (this.brainCollision === true) {
   //     this.score++
-  //   } else if (enemiesCollision() === true) {
+  //   } else if (this.enemiesCollision === true) {
   //     //setGameOver();
   //   }
-  //   console.log(this.score)
+  //   console.log("score", this.score)
   // }
 
   // drawScore() {

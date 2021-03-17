@@ -4,7 +4,7 @@ class Player {
     this.y = y;
     this.direction = direction;
     this.ctx = ctx;
-    this.size = size;
+    this.size = 150;
 
   }
 
@@ -48,6 +48,9 @@ class Player {
     return this.direction = "up";
   }
 
+  isInGround() {
+    return this.direction = "ground";
+  }
 
   draw() {
     let img = new Image();
@@ -59,16 +62,27 @@ class Player {
     let imgLeft = new Image();
     imgLeft.src = "./images/zombies/Walk (1)Left.png";
 
-    let imgUp = new Image();
-    imgUp.src = "./images/zombies/Walk (10).png";
+    let imgUpRigth = new Image();
+    imgUpRigth.src = "./images/zombies/Jump.png";
+
+    let imgUpLeft = new Image();
+    imgUpLeft.src = "./images/zombies/left-jump.png";
+
 
     if (this.direction === "right") {
       img = imgRight;
     } else if (this.direction === "left") {
       img = imgLeft;
+    } else if (this.direction === "left" && this.game.setControlsToKeys.event.code === "ArrowUp") {
+      img = imgUpLeft;
+      this.size = 175;
     } else if (this.direction === "up") {
-      img = imgUp;
-    };
+      img = imgUpRigth;
+      this.size = 175;
+    } else if (this.direction === "ground") {
+      img = imgRight;
+      this.size = 150;
+    }
 
     this.ctx.drawImage(img, this.x, this.y, this.size, this.size);
 

@@ -7,12 +7,13 @@ class InteractionObjects {
 };
 
 class Brains extends InteractionObjects {
-  constructor(x, y, size, ctx) {
+  constructor(x, y, size, ctx, status) {
     super(x, y, size, ctx)
     this.size = 100;
     this.x = this.size + Math.floor(Math.random() * (canvas.width - this.size));
     this.y = 0;
     this.ctx = canvas.getContext("2d");
+    this.status = status;
   }
 
 
@@ -26,12 +27,13 @@ class Brains extends InteractionObjects {
 
 
 class Enemies extends InteractionObjects {
-  constructor(x, y, size, ctx) {
+  constructor(x, y, size, ctx, status) {
     super(x, y, size, ctx)
     this.size = 100;
-    this.x = this.size + Math.floor(Math.random() * (canvas.width - this.size));
-    this.y = 0;
+    this.x = 60;
+    this.y = 560//this.size + Math.floor(Math.random() * (canvas.width - this.size));;
     this.ctx = canvas.getContext("2d");
+    this.status = status;
   }
 
 

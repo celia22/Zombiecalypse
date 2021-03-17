@@ -15,11 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   function startGame() {
-    const zombieGirl = new Player(250, 540, "right", ctx, 150);
-    const brainiac = new Brains(this.x, 0, this.size, ctx);
-    const zombicalypse = new Game(zombieGirl, brainiac, 0, ctx);
+    const zombieGirl = new Player(250, 540, "right", ctx, this.size);
+    const zombicalypse = new Game(zombieGirl, ctx);
     zombicalypse.init()
-
   };
 
   drawGameScreen();
