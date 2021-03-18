@@ -3,11 +3,10 @@
 
 #intro{ 
     display: flex;
-    background-color: black;
     background: url(../images/backgrounds/splashBackground.jpg); 
-    /* -webkit-background-size: cover;
+    -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover; */
+    -o-background-size: cover; 
     background-size: cover;
     width: 90rem;
     height: 48rem;
@@ -49,14 +48,51 @@
 
 /************  GAME SCREEN *************/
 
-
-#game{ 
-    background-color: wheat;
-    background: url(../images/backgrounds/gameBackground.png); 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+#canvas { 
+    background:url(../images/backgrounds/lastBG.png);
+    background-size: 100% 100%;
     background-size: cover;
-    display: none;  
-    
-};
+    background-repeat: no-repeat;
+    display: none;
+  } 
+
+
+  #score{
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    display: none;
+    border: 4px solid black;
+    padding: 8px;
+    background-color: white;
+    opacity: 0.6;
+    border-radius: 10px;
+    z-index: 2;
+  }
+  
+
+  #game-over{
+    display: none;
+    background-color: black; 
+    background-size: cover;
+    width: 90rem;
+    height: 48rem;
+ 
+  }
+
+  #game-over h1{
+    color: white;
+    font-size: 40px; 
+    position: relative;
+  }
+
+  #game-over img{
+    position: absolute;
+    left: 800px;
+    top: 50px;
+    width: 400px;
+    height: 650px;
+  }

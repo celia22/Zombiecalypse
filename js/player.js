@@ -5,7 +5,7 @@ class Player {
     this.direction = direction;
     this.ctx = ctx;
     this.size = 150;
-
+    this.selectedImg;
   }
 
   moveLeft() {
@@ -22,18 +22,26 @@ class Player {
   }
 
   moveUp() {
-    if (this.y === 540) {
-      this.y -= 200;
+    if (this.y === 600) {
+      this.y -= 400;
     }
   }
 
 
   fall() {
-    if (this.y === 340) {
-      this.y += 200;
+    if (this.y === 200) {
+      this.y += 400;
     }
 
   }
+
+
+  // jumping() {
+  //   if (this.moveUp === true) {
+  //     setInterval(fall, 1000)
+  //   }
+  // }
+
 
   isDirectionRight() {
     return this.direction = "right";
@@ -71,9 +79,10 @@ class Player {
 
     if (this.direction === "right") {
       img = imgRight;
+      this.selectedImg = this.imgRight;
     } else if (this.direction === "left") {
       img = imgLeft;
-    } else if (this.direction === "left" && this.game.setControlsToKeys.event.code === "ArrowUp") {
+    } else if (this.direction === "left" && this.player.isDirectionUp()) {
       img = imgUpLeft;
       this.size = 175;
     } else if (this.direction === "up") {

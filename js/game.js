@@ -7,9 +7,6 @@ class Game {
     this.player = player;
     this.ctx = ctx;
     this.score = 0;
-
-    //this.gameover;
-
   }
 
   setControlsToKeys() {
@@ -69,13 +66,12 @@ class Game {
       if (this.player.x < (item.x + item.size) &&
         (this.player.x + this.player.size / 2) > item.x &&
         this.player.y < (item.y + item.size) &&
-        (this.player.y + this.player.size) > item.y) {
+        (this.player.y + this.player.size) > item.y && item.status === true) {
         item.status = false;
-        this.score++  // sube 49 puntos por collision
-        console.log("score", this.score)
+        this.score++
       }
-
     });
+    //console.log(this.score)
   }
 
 
@@ -83,6 +79,15 @@ class Game {
     generatedBrain.forEach(item => {
       item.y += 5;
     });
+  }
+
+  deleteBrains() {
+    generatedBrain.forEach((item, index) => {
+      if (item.y > canvas.height) {
+        generatedBrain.splice(item, index);
+      }
+    });
+    //console.log("brains", generatedBrain)
   }
 
   // ENEMIES 
@@ -103,46 +108,48 @@ class Game {
 
   moveEnemies() {
     generatedEnemies.forEach(item => {
-      item.x += 8;
+      item.x -= 8;
     });
   }
 
 
   enemiesCollision() {
     generatedEnemies.forEach(item => {
-      if (this.player.x < (item.x + item.size) &&
+      if (this.player.x < (item.x + item.size + 10) &&
         (this.player.x + this.player.size / 2) > item.x &&
         this.player.y < (item.y + item.size) &&
-        (this.player.y + this.player.size) > item.y) {
+        (this.player.y + this.player.size) > item.y &&
+        item.status === true) {
         item.status = false;
+        setInterval(this.gameOver, 1000)
       }
     });
     return true
   }
 
+  deleteBrains() {
+    generatedEnemies.forEach((item, index) => {
+      if (item.y > canvas.height) {
+        generatedEnemies.splice(item, index);
+      }
+    });
+    // console.log("brains", generatedEnemies)
+  }
 
+  // GAME //
 
-  // delete(){
-  //   if(this.y > canvas.height){
-
-  //   }
-  // }
-
-  // updateScore() {
-  //   if (this.brainCollision === true) {
-  //     this.score++
-  //   } else if (this.enemiesCollision === true) {
-  //     //setGameOver();
-  //   }
-  //   console.log("score", this.score)
-  // }
-
-  // drawScore() {
-  // }
-
+  drawScore() {
+    document.getElementById("score").innerHTML = "Score: " + this.score;
+  }
 
   cleanCanvas() {
     ctx.clearRect(0, 0, 1450, 750);
+  }
+
+  gameOver() {
+    document.getElementById("game-over").style.display = "block";
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("score").style.display = "none";
   }
 
   update() {
@@ -154,7 +161,8 @@ class Game {
     this.printEnemies();
     this.moveEnemies();
     this.enemiesCollision();
-    //this.updateScore();
+    this.drawScore();
+    this.deleteBrains();
     window.requestAnimationFrame(this.update.bind(this));
 
   }

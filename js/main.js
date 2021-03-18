@@ -1,27 +1,38 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+let puntuacion = document.getElementById("score")
 
-document.getElementById("gameover").style.display = "none";
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
   function drawGameScreen() {
     document.getElementById('startButton').onclick = () => {
+      document.getElementById("game-over").style.display = "none";
       document.getElementById("intro").style.display = "none";
       document.getElementById("startButton").style.display = "none";
-      document.getElementById("game").style.display = "block";
+      document.getElementById("canvas").style.display = "block";
+      document.getElementById("score").style.display = "block";
+
     };
   };
 
   function startGame() {
-    const zombieGirl = new Player(250, 540, "right", ctx, this.size);
+    const zombieGirl = new Player(250, 600, "right", ctx, this.size);
     const zombicalypse = new Game(zombieGirl, ctx);
     zombicalypse.init()
   };
 
+  // function gameOver() {
+  //   document.getElementById("game-over").style.display = "block";
+  //   document.getElementById("canvas").style.display = "none";
+  // }
+
   drawGameScreen();
-  startGame()
+  startGame();
+  //gameOver();
 
 });
 
