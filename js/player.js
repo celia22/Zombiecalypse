@@ -23,14 +23,14 @@ class Player {
 
   moveUp() {
     if (this.y === 600) {
-      this.y -= 400;
+      this.y -= 220;
     }
   }
 
 
   fall() {
     if (this.y === 200) {
-      this.y += 400;
+      this.y += 200;
     }
 
   }

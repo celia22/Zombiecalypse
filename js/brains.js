@@ -32,7 +32,7 @@ class Brains extends InteractionObjects {
 class Enemies extends InteractionObjects {
   constructor(x, y, size, ctx, status) {
     super(x, y, size, ctx)
-    this.size = 300;
+    this.size = 250;
     this.x = 1400;
     this.y = 540;
     this.ctx = canvas.getContext("2d");
