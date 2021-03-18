@@ -25,14 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
     zombicalypse.init()
   };
 
-  // function gameOver() {
-  //   document.getElementById("game-over").style.display = "block";
-  //   document.getElementById("canvas").style.display = "none";
-  // }
 
   drawGameScreen();
   startGame();
-  //gameOver();
 
 });
 

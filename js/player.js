@@ -5,7 +5,7 @@ class Player {
     this.direction = direction;
     this.ctx = ctx;
     this.size = 150;
-    this.selectedImg;
+    //this.selectedImg;
   }
 
   moveLeft() {
@@ -23,14 +23,14 @@ class Player {
 
   moveUp() {
     if (this.y === 600) {
-      this.y -= 220;
+      this.y -= 250;
     }
   }
 
 
   fall() {
-    if (this.y === 200) {
-      this.y += 200;
+    if (this.y === 350) {
+      this.y += 250;
     }
 
   }
