@@ -63,18 +63,23 @@ class Player {
       this.selectedImg = this.imgRight;
     } else if (this.direction === "left") {
       this.selectedImg = this.imgLeft;
-    } else if (this.direction === "left" && this.moveUp) {
-      console.log("entro en left")
-      this.selectedImg = this.imgUpLeft;
-      this.size = 175;
     } else if (this.direction === "up") {
-      this.selectedImg = this.imgUpRigth;
-      this.size = 175;
+      if (this.selectedImg === this.imgLeft) {
+        console.log("entro en left")
+        this.selectedImg = this.imgUpLeft;
+        this.size = 175;
+      }
+      else if (this.selectedImg === this.imgRight) {
+        console.log("entro en rigth")
+        this.selectedImg = this.imgUpRigth;
+        this.size = 175;
+      }
     } else if (this.direction === "ground") {
       this.selectedImg = this.imgRight;
       this.size = 150;
     }
     this.ctx.drawImage(this.selectedImg, this.x, this.y, this.size, this.size);
+
   }
 
 };
