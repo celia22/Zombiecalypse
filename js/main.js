@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("startButton").style.display = "none";
       document.getElementById("canvas").style.display = "block";
       document.getElementById("score").style.display = "block";
+      startGame();
 
     };
+
   };
 
   function startGame() {
@@ -25,9 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     zombicalypse.init()
   };
 
-
   drawGameScreen();
-  startGame();
+
 
 });
 

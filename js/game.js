@@ -7,6 +7,7 @@ class Game {
     this.player = player;
     this.ctx = ctx;
     this.score = 0;
+
   }
 
   setControlsToKeys() {
@@ -14,30 +15,22 @@ class Game {
       switch (event.code) {
         case "ArrowLeft":
           this.player.moveLeft();
-          this.player.isDirectionLeft();
-          console.log(this.player.direction)
-          //console.log('left');
           break;
         case "ArrowRight":
           this.player.moveRight();
-          this.player.isDirectionRight();
-          //console.log('right');
           break;
         case "ArrowUp":
           this.player.moveUp();
-          this.player.isDirectionUp();
-          //console.log("up");
           break;
 
       }
-      //console.log("setokeys", this.setControlsToKeys)
     });
 
     document.addEventListener('keyup', event => {
       switch (event.code) {
         case "ArrowUp":
           this.player.fall();
-          this.player.isInGround();
+          //this.player.isInGround();
           break;
 
       }
@@ -71,13 +64,12 @@ class Game {
         this.score++
       }
     });
-    //console.log(this.score)
   }
 
 
   moveBrains() {
     generatedBrain.forEach(item => {
-      item.y += 5;
+      item.y += 7;
     });
   }
 
@@ -87,7 +79,6 @@ class Game {
         generatedBrain.splice(item, index);
       }
     });
-    //console.log("brains", generatedBrain)
   }
 
   // ENEMIES 
@@ -108,7 +99,7 @@ class Game {
 
   moveEnemies() {
     generatedEnemies.forEach(item => {
-      item.x -= 8;
+      item.x -= 10;
     });
   }
 
@@ -121,13 +112,12 @@ class Game {
         (this.player.y + this.player.size) > item.y &&
         item.status === true) {
         item.status = false;
-        setInterval(this.gameOver, 1000)
+        this.gameOver()
       }
     });
-    return true
   }
 
-  deleteBrains() {
+  deleteEnemies() {
     generatedEnemies.forEach((item, index) => {
       if (item.y > canvas.height) {
         generatedEnemies.splice(item, index);
@@ -163,6 +153,7 @@ class Game {
     this.enemiesCollision();
     this.drawScore();
     this.deleteBrains();
+    this.deleteEnemies();
     window.requestAnimationFrame(this.update.bind(this));
 
   }
@@ -170,9 +161,8 @@ class Game {
 
   init() {
     this.setControlsToKeys();
-    console.log("setcontrolskeys was called")
-    setInterval(this.generateBrains, 3000)
     setInterval(this.generateEnemies, 6000)
+    setInterval(this.generateBrains, 3000)
     window.requestAnimationFrame(this.update.bind(this));
   }
 
