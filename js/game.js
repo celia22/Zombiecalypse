@@ -198,7 +198,6 @@ class Game {
     }
   }
 
-
   init() {
     this.setControlsToKeys();
     enemiesInterval = setInterval(this.generateEnemies, 8000)
@@ -215,8 +214,8 @@ class Game {
     this.score = 0;
     this.endGame = false;
     this.restart;
+    console.log("score", this.score)
   }
-
 
 };
 
