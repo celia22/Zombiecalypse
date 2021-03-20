@@ -4,8 +4,6 @@ const ctx = canvas.getContext("2d");
 let puntuacion = document.getElementById("score")
 
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
   function drawGameScreen() {
@@ -23,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startGame() {
     const zombieGirl = new Player(250, 600, "right", ctx, this.size);
-    const zombicalypse = new Game(zombieGirl, ctx);
+    const zombicalypse = new Game(zombieGirl, ctx, this.endGame);
     zombicalypse.init()
   };
 
