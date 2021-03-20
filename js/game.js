@@ -1,6 +1,9 @@
 let generatedBrain = [];
 let generatedEnemies = [];
 let generatedEnemiesRight = [];
+let enemiesInterval;
+let enemiesRightInterval;
+let brainsInterval;
 
 
 class Game {
@@ -9,6 +12,7 @@ class Game {
     this.ctx = ctx;
     this.score = 0;
     this.endGame = false;
+    this.restart = this.restart;
   }
 
   setControlsToKeys() {
@@ -85,12 +89,14 @@ class Game {
   // ENEMIES 
 
   generateEnemies() {
+    console.log("entro en enemies")
     let temp = new Enemies(this.x, 0, this.size, ctx, true)
     generatedEnemies.push(temp);
 
   }
 
   generateEnemiesRight() {
+    console.log("entro en enemies2")
     let tempRight = new EnemiesRight(this.x, 0, this.size, ctx, true)
     generatedEnemiesRight.push(tempRight);
   }
@@ -132,8 +138,7 @@ class Game {
         (this.player.y + this.player.size) > item.y &&
         item.status === true) {
         item.status = false;
-        this.gameOver()
-        //return true
+        this.endGame = true;
       }
     });
   }
@@ -146,8 +151,8 @@ class Game {
         (this.player.y + this.player.size) > item.y &&
         item.status === true) {
         item.status = false;
-        this.gameOver()
-        // return true
+        this.endGame = true;
+        console.log(generatedEnemiesRight)
       }
     });
   }
@@ -170,13 +175,6 @@ class Game {
     ctx.clearRect(0, 0, 1450, 750);
   }
 
-  gameOver() {
-    document.getElementById("game-over").style.display = "block";
-    document.getElementById("canvas").style.display = "none";
-    document.getElementById("score").style.display = "none";
-    this.endGame = true;
-  }
-
   update() {
     this.cleanCanvas();
     this.player.draw();
@@ -195,19 +193,30 @@ class Game {
     if (this.endGame === false) {
       window.requestAnimationFrame(this.update.bind(this));
     }
+    if (this.endGame === true) {
+      this.reset();
+    }
   }
+
 
   init() {
     this.setControlsToKeys();
-    setInterval(this.generateEnemies, 8000)
-    setInterval(this.generateEnemiesRight, 6000)
-    setInterval(this.generateBrains, 3000)
+    enemiesInterval = setInterval(this.generateEnemies, 8000)
+    enemiesRightInterval = setInterval(this.generateEnemiesRight, 6000)
+    brainsInterval = setInterval(this.generateBrains, 3000)
     window.requestAnimationFrame(this.update.bind(this));
   }
 
+  reset() {
+    clearInterval(enemiesInterval);
+    clearInterval(enemiesRightInterval);
+    clearInterval(brainsInterval);
+    this.player = this.player;
+    this.score = 0;
+    this.endGame = false;
+    this.restart;
+  }
+
+
 };
-
-
-
-
 

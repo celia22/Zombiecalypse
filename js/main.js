@@ -21,14 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startGame() {
     const zombieGirl = new Player(250, 600, "right", ctx, this.size);
-    const zombicalypse = new Game(zombieGirl, ctx, this.endGame);
-    zombicalypse.init()
+    const zombicalypse = new Game(zombieGirl, ctx, this.endGame, this.restart);
+    zombicalypse.init();
+    //if (zombicalypse.endGame === true) {
+    //gameOver();
+    //zombicalypse.reset();
+
+    // }
+
+
   };
+
+  function gameOver() {
+    if (this.game.endGame === true) {
+      console.log("entro en gameover")
+      document.getElementById("game-over").style.display = "block";
+      document.getElementById("canvas").style.display = "none";
+      document.getElementById("score").style.display = "none";
+    }
+  }
 
   drawGameScreen();
 
-
 });
-
 
 
