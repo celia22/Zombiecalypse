@@ -12,7 +12,6 @@ class Game {
     this.ctx = ctx;
     this.score = 0;
     this.endGame = false;
-    this.restart = this.restart;
   }
 
   setControlsToKeys() {
@@ -139,6 +138,7 @@ class Game {
         item.status === true) {
         item.status = false;
         this.endGame = true;
+        console.log("entro en collision")
       }
     });
   }
@@ -152,6 +152,7 @@ class Game {
         item.status === true) {
         item.status = false;
         this.endGame = true;
+        console.log("entro en collisionR")
         console.log(generatedEnemiesRight)
       }
     });
@@ -194,6 +195,8 @@ class Game {
       window.requestAnimationFrame(this.update.bind(this));
     }
     if (this.endGame === true) {
+      gameOver();
+      console.log(this.endGame)
       this.reset();
     }
   }
@@ -207,13 +210,13 @@ class Game {
   }
 
   reset() {
+    console.log("entro en reset")
     clearInterval(enemiesInterval);
     clearInterval(enemiesRightInterval);
     clearInterval(brainsInterval);
     this.player = this.player;
     this.score = 0;
     this.endGame = false;
-    this.restart;
     console.log("score", this.score)
   }
 

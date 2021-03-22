@@ -1,10 +1,10 @@
 class Brains {
-  constructor(x, y, size, ctx, status) {
+  constructor(x, y, size, ctx) {
     this.size = canvas.height / 7;
     this.x = this.size + Math.floor(Math.random() * (canvas.width - 2 * this.size));
     this.y = 0;
     this.ctx = canvas.getContext("2d");
-    this.status = status;
+    this.status = true;
   }
 
 
@@ -18,12 +18,12 @@ class Brains {
 
 
 class Enemies {
-  constructor(x, y, size, ctx, status) {
+  constructor(x, y, size, ctx) {
     this.size = 240;
     this.x = 1400;
     this.y = 540;
     this.ctx = canvas.getContext("2d");
-    this.status = status;
+    this.status = true;
   }
 
 
@@ -38,13 +38,13 @@ class Enemies {
 };
 
 class EnemiesRight extends Enemies {
-  constructor(x, y, size, ctx, status) {
-    super(x, y, size, ctx, status)
+  constructor(x, y, size, ctx) {
+    super(x, y, size, ctx)
     this.size = 240;
     this.x = 0;
     this.y = 540;
     this.ctx = canvas.getContext("2d");
-    this.status = status;
+    this.status = true;
   }
 
 
