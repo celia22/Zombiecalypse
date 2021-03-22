@@ -4,9 +4,6 @@ let generatedEnemiesRight = [];
 let enemiesInterval;
 let enemiesRightInterval;
 let brainsInterval;
-// let tempBrains;
-// let tempEnemie;
-// let tempEnemieRight;
 
 
 class Game {
@@ -15,6 +12,8 @@ class Game {
     this.ctx = ctx;
     this.score = 0;
     this.endGame = false;
+    this.gameOver = gameOver;
+    this.level = 1;
   }
 
   setControlsToKeys() {
@@ -37,7 +36,6 @@ class Game {
       switch (event.code) {
         case "ArrowUp":
           this.player.fall();
-          //this.player.isInGround();
           break;
 
       }
@@ -91,14 +89,12 @@ class Game {
   // ENEMIES 
 
   generateEnemies() {
-    console.log("entro en enemies")
     let tempEnemie = new Enemies(this.x, 0, this.size, ctx, true)
     generatedEnemies.push(tempEnemie);
 
   }
 
   generateEnemiesRight() {
-    console.log("entro en enemies2")
     let tempEnemieRight = new EnemiesRight(this.x, 0, this.size, ctx, true)
     generatedEnemiesRight.push(tempEnemieRight);
   }
@@ -121,26 +117,36 @@ class Game {
 
   moveEnemies() {
     generatedEnemies.forEach(item => {
-      if (this.score > 5) {
-        item.x -= 15;
-      } else {
-        item.x -= 12;
+      if (this.score >= 0 && this.score <= 3) {
+        console.log(this.score)
+        item.x -= 10;
+      } else if (this.score <= 4) {
+        console.log(this.score)
+        item.x -= 13;
+      } else if (this.score <= 7) {
+        item.x -= 16;
+      } else if (this.score <= 10) {
+        item.x -= 19;
       }
 
     });
   }
+
 
   moveEnemiesRight() {
     generatedEnemiesRight.forEach(item => {
-      if (this.score > 5) {
-        item.x += 15;
-      } else {
-        item.x += 12;
+      if (this.score >= 0 && this.score <= 3) {
+        item.x += 10;
+      } else if (this.score <= 4) {
+        item.x += 13;
+      } else if (this.score <= 7) {
+        item.x += 16;
+      } else if (this.score <= 10) {
+        item.x += 19;
       }
 
     });
   }
-
 
   enemiesCollision() {
     generatedEnemies.forEach(item => {
@@ -151,7 +157,7 @@ class Game {
         item.status === true) {
         item.status = false;
         this.endGame = true;
-        console.log("entro en collision", "player", this.player.x, "car", item.x, "itemsize", item.size)
+        //console.log("entro en collision", "player", this.player.x, "car", item.x, "itemsize", item.size)
       }
     });
   }
@@ -165,7 +171,8 @@ class Game {
         item.status === true) {
         item.status = false;
         this.endGame = true;
-        console.log("entro en collisionR", "player", this.player.x, "car", item.x, "itemsize", item.size)
+
+        // console.log("entro en collisionR", "player", this.player.x, "car", item.x, "itemsize", item.size)
       }
     });
   }
@@ -181,7 +188,23 @@ class Game {
   // GAME //
 
   drawScore() {
-    document.getElementById("score").innerHTML = "Score: " + this.score;
+    document.getElementById("score").innerHTML = `Score: ${this.score}`
+  }
+
+  updateLevel() {
+    if (this.score >= 4) {
+      this.level = 2;
+    } else if (this.score >= 7) {
+      this.level = 3;
+    } else if (this.score >= 10) {
+      this.level = 4;
+    }
+    console.log("score", this.score);
+    console.log("level", this.level)
+  }
+
+  drawLevel() {
+    document.getElementById("level").innerHTML = `Level: ${this.level}`
   }
 
   cleanCanvas() {
@@ -201,13 +224,15 @@ class Game {
     this.moveEnemiesRight();
     this.enemiesCollisionRight();
     this.drawScore();
+    this.updateLevel();
+    this.drawLevel();
     this.deleteBrains();
     this.deleteEnemies();
     if (this.endGame === false) {
       window.requestAnimationFrame(this.update.bind(this));
     }
     if (this.endGame === true) {
-      gameOver();
+      this.gameOver();
       console.log(this.endGame)
       this.reset();
     }
@@ -228,6 +253,7 @@ class Game {
     clearInterval(brainsInterval);
     this.player = this.player;
     this.score = 0;
+    this.level = 0;
     this.endGame = false;
     generatedBrain = [];
     generatedEnemies = [];

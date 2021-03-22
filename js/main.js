@@ -17,6 +17,7 @@ function gameOver() {
   document.getElementById("game-over").style.display = "flex";
   document.getElementById("canvas").style.display = "none";
   document.getElementById("score").style.display = "none";
+  document.getElementById("level").style.display = "none";
   document.getElementById("game").style.display = "none";
   playAgain();
 }
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("game").style.display = "flex";
       document.getElementById("canvas").style.display = "flex";
       document.getElementById("score").style.display = "flex";
+      document.getElementById("level").style.display = "flex";
       startGame();
 
     };
