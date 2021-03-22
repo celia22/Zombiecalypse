@@ -144,29 +144,28 @@ class Game {
 
   enemiesCollision() {
     generatedEnemies.forEach(item => {
-      if (this.player.x < (item.x + item.size + 10) &&
+      if (this.player.x < (item.x + item.size) &&
         (this.player.x + this.player.size / 2) > item.x &&
         this.player.y < (item.y + item.size) &&
         (this.player.y + this.player.size) > item.y &&
         item.status === true) {
         item.status = false;
         this.endGame = true;
-        // console.log("entro en collision", this.player.x, this.item.x)
+        console.log("entro en collision", "player", this.player.x, "car", item.x, "itemsize", item.size)
       }
     });
   }
 
   enemiesCollisionRight() {
     generatedEnemiesRight.forEach(item => {
-      if (this.player.x < (item.x + item.size + 10) &&
+      if (this.player.x < (item.x + item.size) &&
         (this.player.x + this.player.size / 2) > item.x &&
         this.player.y < (item.y + item.size) &&
         (this.player.y + this.player.size) > item.y &&
         item.status === true) {
         item.status = false;
         this.endGame = true;
-        console.log("entro en collisionR")
-        console.log(generatedEnemiesRight)
+        console.log("entro en collisionR", "player", this.player.x, "car", item.x, "itemsize", item.size)
       }
     });
   }
