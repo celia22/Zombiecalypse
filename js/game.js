@@ -127,11 +127,12 @@ class Game {
         item.x -= 16;
       } else if (this.score <= 10) {
         item.x -= 19;
+      } else {
+        item.x += 12;
       }
 
     });
   }
-
 
   moveEnemiesRight() {
     generatedEnemiesRight.forEach(item => {
@@ -143,10 +144,13 @@ class Game {
         item.x += 16;
       } else if (this.score <= 10) {
         item.x += 19;
+      } else {
+        item.x += 12;
       }
 
     });
   }
+
 
   enemiesCollision() {
     generatedEnemies.forEach(item => {
@@ -192,15 +196,17 @@ class Game {
   }
 
   updateLevel() {
-    if (this.score >= 4) {
+    if (this.score >= 0 && this.score <= 3) {
+      this.level = 1;
+    } else if (this.score <= 4) {
       this.level = 2;
-    } else if (this.score >= 7) {
+    } else if (this.score <= 7) {
       this.level = 3;
-    } else if (this.score >= 10) {
+    } else if (this.score <= 10) {
       this.level = 4;
+    } else {
+      this.level = "Fastest Zombieeee!"
     }
-    console.log("score", this.score);
-    console.log("level", this.level)
   }
 
   drawLevel() {
