@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   function startGame() {
-    const zombieGirl = new Player(250, 600, "right", ctx, this.size);
+    const zombieGirl = new Player(650, 600, "right", ctx, this.size);
     const zombicalypse = new Game(zombieGirl, ctx);
     zombicalypse.init();
   };

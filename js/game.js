@@ -4,6 +4,9 @@ let generatedEnemiesRight = [];
 let enemiesInterval;
 let enemiesRightInterval;
 let brainsInterval;
+let tempBrains;
+let tempEnemie;
+let tempEnemieRight;
 
 
 class Game {
@@ -45,8 +48,8 @@ class Game {
   // BRAINS 
 
   generateBrains() {
-    let temp = new Brains(this.x, 0, this.size, this.ctx, true)
-    generatedBrain.push(temp);
+    tempBrains = new Brains(this.x, 0, this.size, this.ctx, true)
+    generatedBrain.push(tempBrains);
   }
 
 
@@ -89,15 +92,15 @@ class Game {
 
   generateEnemies() {
     console.log("entro en enemies")
-    let temp = new Enemies(this.x, 0, this.size, ctx, true)
-    generatedEnemies.push(temp);
+    tempEnemie = new Enemies(this.x, 0, this.size, ctx, true)
+    generatedEnemies.push(tempEnemie);
 
   }
 
   generateEnemiesRight() {
     console.log("entro en enemies2")
-    let tempRight = new EnemiesRight(this.x, 0, this.size, ctx, true)
-    generatedEnemiesRight.push(tempRight);
+    tempEnemieRight = new EnemiesRight(this.x, 0, this.size, ctx, true)
+    generatedEnemiesRight.push(tempEnemieRight);
   }
 
   printEnemies() {
@@ -138,7 +141,7 @@ class Game {
         item.status === true) {
         item.status = false;
         this.endGame = true;
-        console.log("entro en collision")
+        // console.log("entro en collision", this.player.x, this.item.x)
       }
     });
   }
@@ -217,6 +220,9 @@ class Game {
     this.player = this.player;
     this.score = 0;
     this.endGame = false;
+    generatedBrain = [];
+    generatedEnemies = [];
+    generatedEnemiesRight = [];
     console.log("score", this.score)
   }
 

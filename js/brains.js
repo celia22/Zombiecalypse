@@ -54,4 +54,5 @@ class EnemiesRight extends Enemies {
     this.ctx.drawImage(imgBrain, this.x, this.y, this.size + 100, this.size);
 
   }
+
 }
