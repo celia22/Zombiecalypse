@@ -4,9 +4,9 @@ let generatedEnemiesRight = [];
 let enemiesInterval;
 let enemiesRightInterval;
 let brainsInterval;
-let tempBrains;
-let tempEnemie;
-let tempEnemieRight;
+// let tempBrains;
+// let tempEnemie;
+// let tempEnemieRight;
 
 
 class Game {
@@ -48,7 +48,7 @@ class Game {
   // BRAINS 
 
   generateBrains() {
-    tempBrains = new Brains(this.x, 0, this.size, this.ctx, true)
+    let tempBrains = new Brains(this.x, 0, this.size, this.ctx, true)
     generatedBrain.push(tempBrains);
   }
 
@@ -92,14 +92,14 @@ class Game {
 
   generateEnemies() {
     console.log("entro en enemies")
-    tempEnemie = new Enemies(this.x, 0, this.size, ctx, true)
+    let tempEnemie = new Enemies(this.x, 0, this.size, ctx, true)
     generatedEnemies.push(tempEnemie);
 
   }
 
   generateEnemiesRight() {
     console.log("entro en enemies2")
-    tempEnemieRight = new EnemiesRight(this.x, 0, this.size, ctx, true)
+    let tempEnemieRight = new EnemiesRight(this.x, 0, this.size, ctx, true)
     generatedEnemiesRight.push(tempEnemieRight);
   }
 
@@ -121,13 +121,23 @@ class Game {
 
   moveEnemies() {
     generatedEnemies.forEach(item => {
-      item.x -= 10;
+      if (this.score > 5) {
+        item.x -= 15;
+      } else {
+        item.x -= 12;
+      }
+
     });
   }
 
   moveEnemiesRight() {
     generatedEnemiesRight.forEach(item => {
-      item.x += 10;
+      if (this.score > 5) {
+        item.x += 15;
+      } else {
+        item.x += 12;
+      }
+
     });
   }
 
@@ -176,7 +186,7 @@ class Game {
   }
 
   cleanCanvas() {
-    ctx.clearRect(0, 0, 1450, 750);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
   update() {

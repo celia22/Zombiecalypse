@@ -6,17 +6,18 @@ let puntuacion = document.getElementById("score")
 function playAgain() {
   document.getElementById('restartButton').onclick = () => {
     document.getElementById("game-over").style.display = "none";
-    document.getElementById("intro").style.display = "block";
-    document.getElementById("startButton").style.display = "block";
+    document.getElementById("intro").style.display = "flex";
+    document.getElementById("startButton").style.display = "flex";
 
   }
 }
 
 function gameOver() {
   console.log("entro en gameover")
-  document.getElementById("game-over").style.display = "block";
+  document.getElementById("game-over").style.display = "flex";
   document.getElementById("canvas").style.display = "none";
   document.getElementById("score").style.display = "none";
+  document.getElementById("game").style.display = "none";
   playAgain();
 }
 
@@ -29,8 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("game-over").style.display = "none";
       document.getElementById("intro").style.display = "none";
       document.getElementById("startButton").style.display = "none";
-      document.getElementById("canvas").style.display = "block";
-      document.getElementById("score").style.display = "block";
+      document.getElementById("game").style.display = "flex";
+      document.getElementById("canvas").style.display = "flex";
+      document.getElementById("score").style.display = "flex";
       startGame();
 
     };
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   function startGame() {
-    const zombieGirl = new Player(650, 600, "right", ctx, this.size);
+    const zombieGirl = new Player(650, 615, "right", ctx, this.size);
     const zombicalypse = new Game(zombieGirl, ctx);
     zombicalypse.init();
   };

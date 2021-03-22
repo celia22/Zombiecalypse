@@ -21,7 +21,7 @@ class Enemies {
   constructor(x, y, size, ctx) {
     this.size = 240;
     this.x = 1400;
-    this.y = 540;
+    this.y = 580;
     this.ctx = canvas.getContext("2d");
     this.status = true;
   }
@@ -42,7 +42,7 @@ class EnemiesRight extends Enemies {
     super(x, y, size, ctx)
     this.size = 240;
     this.x = 0;
-    this.y = 540;
+    this.y = 580;
     this.ctx = canvas.getContext("2d");
     this.status = true;
   }

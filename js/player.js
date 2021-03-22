@@ -36,15 +36,15 @@ class Player {
   }
 
   moveUp() {
-    if (this.y === 600) {
-      this.y -= 250;
+    if (this.y === 615) {
+      this.y -= 235;
       this.direction = "up";
     }
   }
 
   fall() {
-    if (this.y === 350) {
-      this.y += 250;
+    if (this.y === 380) {
+      this.y += 235;
       this.direction = "ground";
     }
   }
