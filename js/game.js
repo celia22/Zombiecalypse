@@ -128,7 +128,7 @@ class Game {
       } else if (this.score <= 10) {
         item.x -= 19;
       } else {
-        item.x += 12;
+        item.x -= 25;
       }
 
     });
@@ -145,7 +145,7 @@ class Game {
       } else if (this.score <= 10) {
         item.x += 19;
       } else {
-        item.x += 12;
+        item.x += 25;
       }
 
     });
@@ -205,7 +205,7 @@ class Game {
     } else if (this.score <= 10) {
       this.level = 4;
     } else {
-      this.level = "Fastest Zombieeee!"
+      this.level = 5 + "Fast Zombiee!"
     }
   }
 
