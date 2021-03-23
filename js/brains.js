@@ -10,7 +10,7 @@ class Brains {
 
   draw() {
     const imgBrain = new Image();
-    imgBrain.src = "./images/brain.png";
+    imgBrain.src = "images/brain.png";
     this.ctx.drawImage(imgBrain, this.x, this.y, this.size, this.size);
   }
 
@@ -29,7 +29,7 @@ class Enemies {
 
   draw() {
     const imgEnemyLeft = new Image();
-    imgEnemyLeft.src = "./images/enemies/monster-truck.png";
+    imgEnemyLeft.src = "images/monster-truck.png";
 
     this.ctx.drawImage(imgEnemyLeft, this.x, this.y, this.size, this.size);
 
@@ -50,7 +50,7 @@ class EnemiesRight extends Enemies {
 
   draw() {
     const imgBrain = new Image();
-    imgBrain.src = "./images/enemies/icecream.png";
+    imgBrain.src = "images/icecream.png";
     this.ctx.drawImage(imgBrain, this.x, this.y, this.size + 100, this.size);
 
   }

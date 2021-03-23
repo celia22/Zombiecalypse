@@ -4,7 +4,7 @@ The purpose of the game is to eat all the brains as possible before they reach t
 The game screen is an interface from which two kind of brains will fall.
 The player is represented by a zombie sprite, that has to reach the "good" brains, and avoid the bad ones.
 The movement is horizontal and vertical, but only forward to the right, so the keys to control it will be up and right. The player will be able to jump to catch/avoid objects.
-The game ends if the zombie eats one of the "bad" brains, represented by reggaeton singers.
+The game ends if the zombie has a crash with one of the cars trying to kill it.
 
 
 ## MVP
@@ -19,16 +19,18 @@ HTML5, Canvas, DOM.
   
 * __Game Screen__
   * Canvas
+  * Score 
+  * Level
 * __Game Over Screen__
   * Play again button
-  * Score ?
+ 
   
 ### Game
 * Create Splash Screen
 * Create interface
 * Create player
 * Move player
-  * Press the right key to move the player horizontally, and top to move it vertically
+* Press the right key to move the player horizontally, and top to move it vertically
 * Create items that fall
 * Check collision with both interactive objects
 * Update Score
@@ -40,7 +42,7 @@ HTML5, Canvas, DOM.
 
 ### Delivery Chart
 * Shows:
-  * Score
+* Score
   
 ### Music
 * Add sound when a brain is catched
