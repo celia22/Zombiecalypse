@@ -6,19 +6,19 @@ class Player {
     this.ctx = ctx;
     this.size = 150;
     this.selectedImg = new Image();
-    this.selectedImg.src = "images/zombies/Attack (2).png";
+    this.selectedImg.src = "Images/zombies/Attack (2).png";
 
     this.imgRight = new Image();
-    this.imgRight.src = "images/zombies/Attack (2).png";
+    this.imgRight.src = "Images/zombies/Attack (2).png";
 
     this.imgLeft = new Image();
-    this.imgLeft.src = "images/zombies/Walk (1)Left.png";
+    this.imgLeft.src = "Images/zombies/Walk (1)Left.png";
 
     this.imgUpRigth = new Image();
-    this.imgUpRigth.src = "images/zombies/Jump.png";
+    this.imgUpRigth.src = "Images/zombies/Jump.png";
 
     this.imgUpLeft = new Image();
-    this.imgUpLeft.src = "images/zombies/left-jump.png";
+    this.imgUpLeft.src = "Images/zombies/left-jump.png";
   }
 
   moveLeft() {
