@@ -50,7 +50,7 @@ table {
 
 
 #intro{ 
-    background: url("splashBackground.jpg"); 
+    background: url("../Images/backgrounds/splashBackground.jpg"); 
     width: 100%;
     height: 100vh;
     background-size: 100% 100%;
@@ -109,7 +109,7 @@ table {
 }
 
 #canvas { 
-    background:url("lastBG.png");
+    background:url("../Images/backgrounds/lastBG.png");
     background-size: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -151,7 +151,7 @@ table {
 
 
   #game-over{
-    background: url("gameoverBG.png"); 
+    background: url("../Images/backgrounds/gameoverBG.png"); 
     width: 100%;
     height: 100vh;
     background-size: 100% 100%;
