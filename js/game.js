@@ -61,10 +61,10 @@ class Game {
 
   brainCollision() {
     generatedBrain.forEach(item => {
-      if (this.player.x < (item.x + item.size) &&
+      if (this.player.x < (item.x + item.size / 2) &&
         (this.player.x + this.player.size / 2) > item.x &&
-        this.player.y < (item.y + item.size) &&
-        (this.player.y + this.player.size) > item.y && item.status === true) {
+        this.player.y < (item.y + item.size / 2) &&
+        (this.player.y + this.player.size / 2) > item.y && item.status === true) {
         item.status = false;
         this.score++
       }
@@ -154,29 +154,29 @@ class Game {
 
   enemiesCollision() {
     generatedEnemies.forEach(item => {
-      if (this.player.x < (item.x + item.size) &&
+      if (this.player.x < (item.x + item.size / 2) &&
         (this.player.x + this.player.size / 2) > item.x &&
-        this.player.y < (item.y + item.size) &&
-        (this.player.y + this.player.size) > item.y &&
+        this.player.y < (item.y + item.size / 2) &&
+        (this.player.y + this.player.size / 2) > item.y &&
         item.status === true) {
         item.status = false;
         this.endGame = true;
-        //console.log("entro en collision", "player", this.player.x, "car", item.x, "itemsize", item.size)
+        console.log("entro en collision", "player", this.player.x, "car", item.x, "itemsize", item.size)
       }
     });
   }
 
   enemiesCollisionRight() {
     generatedEnemiesRight.forEach(item => {
-      if (this.player.x < (item.x + item.size) &&
+      if (this.player.x < (item.x + item.size / 2) &&
         (this.player.x + this.player.size / 2) > item.x &&
-        this.player.y < (item.y + item.size) &&
-        (this.player.y + this.player.size) > item.y &&
+        this.player.y < (item.y + item.size / 2) &&
+        (this.player.y + this.player.size / 2) > item.y &&
         item.status === true) {
         item.status = false;
         this.endGame = true;
 
-        // console.log("entro en collisionR", "player", this.player.x, "car", item.x, "itemsize", item.size)
+        console.log("entro en collisionR", "player", this.player.x, "car", item.x, "itemsize", item.size)
       }
     });
   }
