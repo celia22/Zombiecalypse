@@ -3,6 +3,12 @@ const ctx = canvas.getContext("2d");
 
 let puntuacion = document.getElementById("score")
 
+function playIntroTheme() {
+  let introTheme = new Audio("Images/Sounds/intro.mp3")
+  introTheme.play();
+}
+
+
 function playAgain() {
   document.getElementById('restartButton').onclick = () => {
     document.getElementById("game-over").style.display = "none";
@@ -20,8 +26,8 @@ function gameOver() {
   document.getElementById("level").style.display = "none";
   document.getElementById("game").style.display = "none";
   playAgain();
+  playIntroTheme();
 }
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,13 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   };
 
+
   function startGame() {
     const zombieGirl = new Player(650, 615, "right", ctx, this.size);
     const zombicalypse = new Game(zombieGirl, ctx);
     zombicalypse.init();
+    // introTheme.pause();
+
   };
-
-
 
   drawGameScreen();
 
