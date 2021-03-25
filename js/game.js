@@ -14,6 +14,8 @@ class Game {
     this.endGame = false;
     this.gameOver = gameOver;
     this.level = 1;
+    this.youAreDead = new Audio("Images/Sounds/gameover.mp3")
+    this.delicious = new Audio("Images/Sounds/delicious.mp3")
   }
 
   setControlsToKeys() {
@@ -67,6 +69,7 @@ class Game {
         (this.player.y + this.player.size / 2) > item.y && item.status === true) {
         item.status = false;
         this.score++
+        this.delicious.play();
       }
     });
   }
@@ -161,6 +164,7 @@ class Game {
         item.status === true) {
         item.status = false;
         this.endGame = true;
+        this.youAreDead.play();
         console.log("entro en collision", "player", this.player.x, "car", item.x, "itemsize", item.size)
       }
     });
@@ -175,7 +179,7 @@ class Game {
         item.status === true) {
         item.status = false;
         this.endGame = true;
-
+        this.youAreDead.play();
         console.log("entro en collisionR", "player", this.player.x, "car", item.x, "itemsize", item.size)
       }
     });
