@@ -2,10 +2,14 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 let puntuacion = document.getElementById("score")
+let introTheme = new Audio("Images/Sounds/intro.mp3")
 
 function playIntroTheme() {
-  let introTheme = new Audio("Images/Sounds/intro.mp3")
   introTheme.play();
+}
+
+function stopIntroTheme() {
+  introTheme.pause();
 }
 
 
@@ -14,6 +18,7 @@ function playAgain() {
     document.getElementById("game-over").style.display = "none";
     document.getElementById("intro").style.display = "flex";
     document.getElementById("startButton").style.display = "flex";
+    stopIntroTheme();
 
   }
 }
