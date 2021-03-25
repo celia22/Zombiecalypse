@@ -12,9 +12,8 @@ class Game {
     this.ctx = ctx;
     this.score = 0;
     this.endGame = false;
-    this.gameOver = gameOver;
+    // this.gameOver = gameOver;
     this.level = 1;
-    //this.introTheme = new Audio("Images/Sounds/intro.mp3")
     this.youAreDead = new Audio("Images/Sounds/gameover.mp3")
     this.delicious = new Audio("Images/Sounds/delicious.mp3")
   }
@@ -243,7 +242,7 @@ class Game {
       window.requestAnimationFrame(this.update.bind(this));
     }
     if (this.endGame === true) {
-      this.gameOver();
+      window.setTimeout(gameOver, 1500);
       console.log(this.endGame)
       this.reset();
     }
